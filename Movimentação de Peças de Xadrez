@@ -1,52 +1,59 @@
-# Prerequisites
-*.d
+#include <stdio.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+//Torre
+void TorreMovimentacao(int casas) {
+    if (casas <= 0) {
+        return; // Caso base
+    } else {
+        printf("Direita\n");
+        TorreMovimentacao(casas - 1); // Chamada recursiva
+    }
+}
 
-# Linker output
-*.ilk
-*.map
-*.exp
+// Bispo
+void BispoMovimentacao(int casas) {
+    for (int i = 0; i < casas; i++) {
+            printf("Cima, Direita\n");
+        }
+    }
 
-# Precompiled Headers
-*.gch
-*.pch
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
+// Rainha
+void RainhaMovimentacao(int casas) {
+    if (casas <= 0) {
+        return; // Caso base
+    } else {
+        printf("Esquerda\n");
+        RainhaMovimentacao(casas - 1); // Chamada recursiva
+    }
+}
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+// Cavalo
+void CavaloMovimentacao(int movimentos) {
+    for (int m = 0; m < movimentos; m++) {
+        printf("Cima\nCima\nDireita\n");
+        if (m < movimentos - 1) {
+            printf("---\n"); // Separador entre movimentos
+        }
+    }
+}
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+// Saída no terminal
+int main() {
+    printf("=== Movimentação de Peças de Xadrez ===\n\n");
+    
+    printf("Torre:\n");
+    TorreMovimentacao(5); 
+    
+    printf("\nBispo:\n");
+    BispoMovimentacao(5);
+    
+    printf("\nRainha:\n");
+    RainhaMovimentacao(5);
+    
+    printf("\nCavalo:\n");
+    CavaloMovimentacao(3);
+    
+    return 0;
+}
